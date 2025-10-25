@@ -1,5 +1,5 @@
 
-# 🕛 CTFTime Notifier Bot
+# 🕛 CTFTimeBot (Notifier)
 
 **[➕ Add to Discord](https://top.gg/bot/1217196592046538993) | [⭐ Vote on TOP.GG](https://top.gg/bot/1217196592046538993)**
 
@@ -488,3 +488,4 @@ This project is open source and available under the MIT License.
 **[➕ Add to Discord](https://top.gg/bot/1217196592046538993) | [⭐ Vote on TOP.GG](https://top.gg/bot/1217196592046538993) | [🐛 Report Issues](https://github.com/Mrk756/CtfTimeBot/issues)**
 
 **Need help?** Check [FIREBASE_SETUP.md](FIREBASE_SETUP.md) for detailed setup instructions or open an issue on GitHub.
+

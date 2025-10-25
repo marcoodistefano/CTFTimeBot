@@ -8,9 +8,9 @@ An advanced and reliable Discord bot that automatically posts upcoming Capture T
 Stay organized, never miss a competition, and keep your CTF team informed automatically!
 
 ---
-## Note about the name and relationship with CTFTime
+## **Note about the name and relationship with CTFTime**
 
-CTFTime is an independent website. This project is not affiliated with the CTFTime development team and does not intend to replace them. The name "CTFTimeBot" was chosen solely to make the bot's purpose immediately clear: the bot uses publicly available data on CTFtime.org by performing HTTP (GET) requests to the "upcoming events" page to retrieve events. For official information, updates, or issues related to the listed data, consult CTFtime.org or contact their team directly. This project does not in any way represent CTFTime.org.
+CTFTime is an independent website. This project is not affiliated with the CTFTime development team and does not intend to replace them. The name "CTFTimeBot" was chosen solely to make the bot's purpose immediately clear: the bot uses publicly available data on CTFtime.org by performing HTTP (GET) requests to the "upcoming events" page to retrieve events. For official information, updates, or issues related to the listed data, consult CTFtime.org or contact their team directly. This project does not in any way represent CTFtime.org. Profile images and any other multimedia content used come from their respective public sources; the copyright for such content is and remains assigned to the rightful owners, and this project does not claim ownership.
 ---
 
 ## 🆕 **Recent Major Changes (2025)**
@@ -492,5 +492,6 @@ This project is open source and available under the MIT License.
 **[➕ Add to Discord](https://top.gg/bot/1217196592046538993) | [⭐ Vote on TOP.GG](https://top.gg/bot/1217196592046538993) | [🐛 Report Issues](https://github.com/Mrk756/CtfTimeBot/issues)**
 
 **Need help?** Check [FIREBASE_SETUP.md](FIREBASE_SETUP.md) for detailed setup instructions or open an issue on GitHub.
+
 
 

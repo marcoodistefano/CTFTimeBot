@@ -1,0 +1,6 @@
+python-dotenv
+nextcord
+beautifulsoup4
+requests
+flask
+firebase-admin

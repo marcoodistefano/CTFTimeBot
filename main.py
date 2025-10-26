@@ -12,7 +12,7 @@ import webserver
 from zoneinfo import ZoneInfo
 import firebase_db
 
-# Funzione per inviare gli eventi in batch di 10 per messaggio, ogni embed contiene 10 eventi formattati come richiesto
+# Function to send events in batches of 10 per message, each embed contains 10 formatted events
 async def send_upcoming_events(channel):
     try:
         result = subprocess.run([sys.executable, script_path], capture_output=True, text=True, timeout=30)
@@ -81,7 +81,7 @@ async def send_upcoming_events(channel):
             embed.set_footer(text=f"Page {page_num}/{total_pages}")
             await channel.send(embed=embed)
     except Exception as e:
-        await channel.send(f"❌ Errore durante l'invio degli eventi: {e}")
+        await channel.send(f"❌ Error sending events: {e}")
 
 # Load environment variables from a .env file
 load_dotenv()
@@ -114,7 +114,7 @@ script_path = os.path.join(BASE_DIR, 'upcoming_events.py')
 async def on_ready() -> None:
     print(f'{bot.user} is running!')
     
-    # Inizializza Firebase
+    # Initialize Firebase
     try:
         firebase_db.init_firebase()
         print("✅ Firebase connected successfully")
@@ -131,16 +131,16 @@ async def on_ready() -> None:
         except Exception as e:
             print(f"Failed to set bot avatar: {e}")
 
-    # Avvia una scheduling task per ogni server configurato
+    # Start a scheduling task for each configured server
     try:
         configs = firebase_db.get_all_configs()
         for guild_id, conf in configs.items():
             if conf.get("channel_id"):
                 if str(guild_id) not in SCHEDULER_TASKS or SCHEDULER_TASKS[str(guild_id)] is None or SCHEDULER_TASKS[str(guild_id)].done():
-                    print(f"[AUTO-SCHEDULER] Avvio scheduling task per guild {guild_id}")
+                    print(f"[AUTO-SCHEDULER] Starting scheduling task for guild {guild_id}")
                     SCHEDULER_TASKS[str(guild_id)] = bot.loop.create_task(schedule_daily_message_multi(str(guild_id)))
     except Exception as e:
-        print(f"[AUTO-SCHEDULER] Errore durante l'avvio automatico delle scheduling task: {e}")
+        print(f"[AUTO-SCHEDULER] Error during automatic startup of scheduling tasks: {e}")
 
 
 def calculate_duration(start_end_str):
@@ -188,7 +188,7 @@ async def set_schedule_channel(ctx):
         firebase_db.save_guild_config(guild_id, guild_config)
         
         await ctx.send(f"✅ This channel (`#{ctx.channel.name}`) has been set for daily scheduled messages.")
-        # Riavvia sempre lo scheduler per questa guild
+        # Always restart the scheduler for this guild
         task = SCHEDULER_TASKS.get(guild_id)
         if task and not task.done():
             task.cancel()
@@ -288,7 +288,7 @@ async def schedule_daily_message_multi(guild_id):
     try:
         while True:
             try:
-                # Carica la configurazione aggiornata
+                # Load updated configuration
                 guild_config = firebase_db.get_guild_config(str(guild_id))
                 
                 if not guild_config or "channel_id" not in guild_config:
@@ -555,7 +555,7 @@ async def debug(ctx):
         guild_id = str(ctx.guild.id) if ctx.guild else None
 
         # Check per-guild configuration
-        debug_info.append("**📁 Per-Guild Configuration (Firebase):**")
+        debug_info.append("**📁 Guild Configuration (Firebase):**")
         guild_config = firebase_db.get_guild_config(guild_id)
         
         if guild_config:
@@ -641,7 +641,7 @@ async def scheduler_logs(ctx):
         if not task or task.done():
             info_lines.append("❌ **PROBLEM: No active scheduling task for this server!**")
             info_lines.append("⚠️ The bot may have crashed or frozen.")
-            info_lines.append("💡 Use `/restart_scheduler` to fix the problem.")
+            info_lines.append("💡 Use `/restart_scheduler` to fix the issue.")
         else:
             info_lines.append("✅ Scheduling task is active for this server")
         # Check current configuration
